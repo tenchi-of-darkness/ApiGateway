@@ -1,0 +1,19 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/{catch}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5079
+        }
+      ],
+      "UpstreamPathTemplate": "/hike-service/{catch}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put"]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7026/"
+  }
+}
