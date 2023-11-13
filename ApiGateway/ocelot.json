@@ -10,7 +10,29 @@
         }
       ],
       "UpstreamPathTemplate": "/hike-service/{catch}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put"]
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Delete",
+        "Put"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{catch}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5250
+        }
+      ],
+      "UpstreamPathTemplate": "/activity-service/{catch}",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Delete",
+        "Put"
+      ]
     }
   ],
   "GlobalConfiguration": {
