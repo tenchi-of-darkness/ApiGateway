@@ -18,6 +18,23 @@
       ]
     },
     {
+      "DownstreamPathTemplate": "/api/{catch}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5255
+        }
+      ],
+      "UpstreamPathTemplate": "/user-service/{catch}",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Delete",
+        "Put"
+      ]
+    },
+    {
       "DownstreamPathTemplate": "/map-hub",
       "DownstreamScheme": "ws",
       "DownstreamHostAndPorts": [
