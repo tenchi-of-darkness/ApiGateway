@@ -18,6 +18,17 @@
       ]
     },
     {
+      "DownstreamPathTemplate": "/map-hub",
+      "DownstreamScheme": "ws",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5250
+        }
+      ],
+      "UpstreamPathTemplate": "/activity-service/map-hub"
+    },
+    {
       "DownstreamPathTemplate": "/api/{catch}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

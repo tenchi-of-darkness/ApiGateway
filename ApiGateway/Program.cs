@@ -29,6 +29,7 @@ public class Program
             .UseIISIntegration()
             .Configure(app =>
             {
+                app.UseWebSockets();
                 app.UseOcelot().Wait();
             })
             .Build()
