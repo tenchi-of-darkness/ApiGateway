@@ -1,3 +1,4 @@
+using System.Net;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -19,7 +20,9 @@ public class Program
                     .AddJsonFile("ocelot.json")
                     .AddEnvironmentVariables();
             })
-            .ConfigureServices(s => {
+            .ConfigureServices(s =>
+            {
+                s.AddCors();
                 s.AddOcelot();
             })
             .ConfigureLogging((hostingContext, logging) =>
@@ -29,6 +32,7 @@ public class Program
             .UseIISIntegration()
             .Configure(app =>
             {
+                app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000"));
                 app.UseWebSockets();
                 app.UseOcelot().Wait();
             })
