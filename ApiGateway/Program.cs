@@ -41,7 +41,7 @@ public class Program
             .Configure(app =>
             {
                 app.UseCors(x =>
-                    x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000"));
+                    x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000", "https://travel-planner.melanievandegraaf.nl"));
                 app.UseWebSockets();
                 app.UseOcelot().Wait();
             })
