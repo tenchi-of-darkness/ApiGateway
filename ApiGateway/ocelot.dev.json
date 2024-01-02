@@ -5,8 +5,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "travel_planner_hike_service",
-          "Port": 80
+          "Host": "localhost",
+          "Port": 5079
         }
       ],
       "UpstreamPathTemplate": "/hike-service/{catch}",
@@ -22,8 +22,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "travel_planner_user_service",
-          "Port": 80
+          "Host": "localhost",
+          "Port": 5255
         }
       ],
       "UpstreamPathTemplate": "/user-service/{catch}",
@@ -39,8 +39,8 @@
       "DownstreamScheme": "ws",
       "DownstreamHostAndPorts": [
         {
-          "Host": "travel_planner_activity_service",
-          "Port": 80
+          "Host": "localhost",
+          "Port": 5250
         }
       ],
       "UpstreamPathTemplate": "/activity-service/map-hub"
@@ -50,8 +50,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "travel_planner_activity_service",
-          "Port": 80
+          "Host": "localhost",
+          "Port": 5250
         }
       ],
       "UpstreamPathTemplate": "/activity-service/{catch}",

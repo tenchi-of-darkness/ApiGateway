@@ -13,11 +13,19 @@ public class Program
             .UseContentRoot(Directory.GetCurrentDirectory())
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
-                config
-                    .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                var configX = config.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
                     .AddJsonFile("appsettings.json", true, true)
-                    .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
-                    .AddJsonFile("ocelot.json")
+                    .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true);
+                if (hostingContext.HostingEnvironment.IsProduction())
+                {
+                    configX.AddJsonFile("ocelot.json");
+                }
+                else
+                {
+                    configX.AddJsonFile("ocelot.dev.json");
+                }
+
+                configX
                     .AddEnvironmentVariables();
             })
             .ConfigureServices(s =>
@@ -32,7 +40,8 @@ public class Program
             .UseIISIntegration()
             .Configure(app =>
             {
-                app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000"));
+                app.UseCors(x =>
+                    x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000"));
                 app.UseWebSockets();
                 app.UseOcelot().Wait();
             })
