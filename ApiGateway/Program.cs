@@ -35,7 +35,7 @@ public class Program
             })
             .ConfigureLogging((hostingContext, logging) =>
             {
-                //add your logging
+                logging.AddConsole();
             })
             .UseIISIntegration()
             .Configure(app =>
