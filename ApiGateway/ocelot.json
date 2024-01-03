@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "travel_planner_hike_service",
-          "Port": 80
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/hike-service/{catch}",
@@ -23,7 +23,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "travel_planner_user_service",
-          "Port": 80
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/user-service/{catch}",
@@ -39,8 +39,8 @@
       "DownstreamScheme": "ws",
       "DownstreamHostAndPorts": [
         {
-          "Host": "travel_planner_activity_service",
-          "Port": 80
+          "Host": "travel_planner_plan_service",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/activity-service/map-hub"
@@ -50,8 +50,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "travel_planner_activity_service",
-          "Port": 80
+          "Host": "travel_planner_plan_service",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/activity-service/{catch}",
@@ -64,6 +64,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:7026/"
+    "BaseUrl": "https://travel-planner-api.melanievandegraaf.nl/"
   }
 }
