@@ -32,6 +32,7 @@ public class Program
             {
                 s.AddCors();
                 s.AddOcelot();
+                s.AddSignalR();
             })
             .ConfigureLogging((hostingContext, logging) =>
             {

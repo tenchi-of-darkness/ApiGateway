@@ -18,6 +18,42 @@
       ]
     },
     {
+      "DownstreamPathTemplate": "/map-hub",
+      "DownstreamScheme": "ws",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5079
+        }
+      ],
+      "UpstreamPathTemplate": "/hike-service/map-hub",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Delete",
+        "Put",
+        "Options"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/map-hub",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5079
+        }
+      ],
+      "UpstreamPathTemplate": "/hike-service/map-hub",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Delete",
+        "Put",
+        "Options"
+      ]
+    },
+    {
       "DownstreamPathTemplate": "/api/{catch}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -33,17 +69,6 @@
         "Delete",
         "Put"
       ]
-    },
-    {
-      "DownstreamPathTemplate": "/map-hub",
-      "DownstreamScheme": "ws",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5250
-        }
-      ],
-      "UpstreamPathTemplate": "/activity-service/map-hub"
     },
     {
       "DownstreamPathTemplate": "/api/{catch}",
