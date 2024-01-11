@@ -1,4 +1,5 @@
 using System.Net;
+using System.Net.WebSockets;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -31,8 +32,8 @@ public class Program
             .ConfigureServices(s =>
             {
                 s.AddCors();
-                s.AddOcelot();
                 s.AddSignalR();
+                s.AddOcelot();
             })
             .ConfigureLogging((hostingContext, logging) =>
             {

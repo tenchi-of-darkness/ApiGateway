@@ -14,11 +14,12 @@
         "Get",
         "Post",
         "Delete",
-        "Put"
+        "Put",
+        "Options"
       ]
     },
     {
-      "DownstreamPathTemplate": "/map-hub",
+      "DownstreamPathTemplate": "/api/map-hub",
       "DownstreamScheme": "ws",
       "DownstreamHostAndPorts": [
         {
@@ -32,25 +33,8 @@
         "Post",
         "Delete",
         "Put",
-        "Options"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/map-hub",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "travel_planner_hike_service",
-          "Port": 8080
-        }
-      ],
-      "UpstreamPathTemplate": "/hike-service/map-hub",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Delete",
-        "Put",
-        "Options"
+        "Options",
+        "Connect"
       ]
     },
     {

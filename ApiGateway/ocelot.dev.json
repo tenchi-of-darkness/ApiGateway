@@ -1,6 +1,26 @@
 {
   "Routes": [
     {
+      "DownstreamPathTemplate": "/api/map-hub",
+      "DownstreamScheme": "ws",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5079
+        }
+      ],
+      "ReRouteIsCaseSensitive": false,
+      "UpstreamPathTemplate": "/hike-service/map-hub",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Delete",
+        "Put",
+        "Options",
+        "Connect"
+      ]
+    },
+    {
       "DownstreamPathTemplate": "/api/{catch}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -9,42 +29,8 @@
           "Port": 5079
         }
       ],
+      "ReRouteIsCaseSensitive": false,
       "UpstreamPathTemplate": "/hike-service/{catch}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Delete",
-        "Put"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/map-hub",
-      "DownstreamScheme": "ws",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5079
-        }
-      ],
-      "UpstreamPathTemplate": "/hike-service/map-hub",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Delete",
-        "Put",
-        "Options"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/map-hub",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5079
-        }
-      ],
-      "UpstreamPathTemplate": "/hike-service/map-hub",
       "UpstreamHttpMethod": [
         "Get",
         "Post",
