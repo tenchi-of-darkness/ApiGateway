@@ -40,10 +40,15 @@ public class Program
                 logging.AddConsole();
             })
             .UseIISIntegration()
-            .Configure(app =>
+            .Configure((context, app) =>
             {
-                app.UseCors(x =>
-                    x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000", "https://travel-planner.melanievandegraaf.nl"));
+                var origins = context.Configuration.GetSection("CorsOrigins").Get<List<string>>();
+                if (origins != null && origins.Count != 0)
+                {
+                    app.UseCors(x =>
+                        x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins(origins.ToArray()));
+                }
+                
                 app.UseWebSockets();
                 app.UseOcelot().Wait();
             })
