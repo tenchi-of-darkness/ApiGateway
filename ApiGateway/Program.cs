@@ -7,13 +7,17 @@ namespace ApiGateway;
 
 public class Program
 {
+    
     public static void Main(string[] args)
     {
-        new WebHostBuilder()
+        string? environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+        var host = new WebHostBuilder()
             .UseKestrel()
             .UseContentRoot(Directory.GetCurrentDirectory())
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
+                environmentName = hostingContext.HostingEnvironment.EnvironmentName;
                 var configX = config.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
                     .AddJsonFile("appsettings.json", true, true)
                     .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true);
@@ -48,11 +52,16 @@ public class Program
                     app.UseCors(x =>
                         x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins(origins.ToArray()));
                 }
-                
+
                 app.UseWebSockets();
                 app.UseOcelot().Wait();
-            })
-            .Build()
-            .Run();
+            });
+
+        if (environmentName != "Development")
+        {
+            host.UseUrls("http://*:80/");
+        }
+        
+        host.Build().Run();
     }
 }
